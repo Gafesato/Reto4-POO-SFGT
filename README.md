@@ -11,13 +11,17 @@
     - Ejemplo 1: Creación de un Cuadrado
     - Ejemplo 2: Creación de un Rectángulo
     - Ejemplo 3: Creación de un Triángulo Escaleno
-4. Conclusiones
 
 ---
 
 ## Introducción
 
-Este código está diseñado para trabajar con diferentes figuras geométricas, como cuadrados, rectángulos y triángulos. Utiliza una jerarquía de clases, donde `Shape` es la clase base y las otras figuras la heredan para implementaciones específicas, como el cálculo de áreas y perímetros.
+Este código está diseñado para trabajar con diferentes figuras geométricas, como cuadrados, rectángulos y triángulos. Utiliza una jerarquía de clases, donde `Shape` es la clase base y las otras figuras la heredan para implementaciones específicas, como el cálculo de áreas y perímetros. Además se hace uso de todos los conceptos vistos durante el curso de POO, tales como:
+1. *Herencia* para evitar la duplicación de código.
+2. *Polimorfismo* ya que algunas clases tienen forma única de calcular su área.
+3. *Encapsulamiento* en algunos métodos que solo se usan dentro de la clase.
+4. *Abstracción* en la definición de las clases de `Line` y `Point`.
+5. *Composición* ya que la clase `Line` está compuesta de Puntos, y `Shape` tiene líneas y puntos.
 
 ---
 
@@ -104,3 +108,63 @@ class Point:
         return ((self.x - point.x)**2 + (self.y - point.y)**2)**0.5
 ```
 ---
+## Ejemplos
+### Ejemplo 1
+```python
+p1 = Point(0, 0)
+p2 = Point(5, 0)
+p3 = Point(5, 5)
+p4 = Point(0, 5)
+
+square = Square(1, p1, p2, p3, p4)
+
+print(f"Área del cuadrado: {square.compute_area()}")
+print(f"Perímetro del cuadrado: {square.compute_perimeter()}")
+print(f"Ángulos internos del cuadrado: {square.compute_inner_angles()}")
+```
+Resultado:
+```bash
+Área del cuadrado: 25
+Perímetro del cuadrado: 20
+Ángulos internos del cuadrado: [90.0, 90.0, 90.0, 90.0]
+```
+### Ejemplo 2
+```python
+p1 = Point(0, 0)
+p2 = Point(10, 0)
+p3 = Point(10, 5)
+p4 = Point(0, 5)
+
+rectangle = Rectangle(1, p1, p2, p3, p4)
+
+print(f"Área del rectángulo: {rectangle.compute_area()}")
+print(f"Perímetro del rectángulo: {rectangle.compute_perimeter()}")
+print(f"Ángulos internos del rectángulo: {rectangle.compute_inner_angles()}")
+```
+Resultado:
+```bash
+Área del rectángulo: 50
+Perímetro del rectángulo: 30
+Ángulos internos del rectángulo: [90.0, 90.0, 90.0, 90.0]
+```
+### Ejemplo 3
+```python
+p1 = Point(0, 0)
+p2 = Point(5, 0)
+p3 = Point(5, 4)
+
+scalene = Scalene(1, p1, p2, p3)
+
+print(f"Área del triángulo escaleno: {scalene.compute_area()}")
+print(f"Perímetro del triángulo escaleno: {scalene.compute_perimeter()}")
+print(f"Ángulos internos del triángulo escaleno: {scalene.compute_inner_angles()}")
+```
+Resultado:
+```bash
+Área del triángulo escaleno: 10.0
+Perímetro del triángulo escaleno: 12.0
+Ángulos internos del triángulo escaleno: [53.13, 36.87, 90.0]
+```
+---
+
+
