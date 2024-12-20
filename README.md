@@ -451,6 +451,16 @@ ds1.set_on_season(True)
 ds1.set_on_season(False)
 ```
 ### Hacer el pago con tarjeta
+Instanciamos...
+```python
+# Método de pago 1
+card = Card()
+card.set_number('1234567891234567')
+card.set_cvv('707')
+
+# Método de pago 2
+billetito = Efective(100)
+```
 ```python
 card = Card()
 card.set_number('1234567891234567')
