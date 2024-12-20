@@ -1,12 +1,14 @@
-# Menú de Navegación
+# Solucion Reto 4 POO
+---
+# Clase Shape
 1. Introducción
-2. Clases y Métodos
-    - Clase Shape
-    - Clase Rectangle
-    - Clase Square
-    - Clase Triangle
-    - Clase Line
-    - Clase Point
+2. Clases y Métodos Shape
+    - Clase `Shape`
+    - Clase `Rectangle`
+    - Clase `Square`
+    - Clase `Triangle`
+    - Clase `Line`
+    - Clase `Point`
 3. Ejemplos
     - Ejemplo 1: Creación de un Cuadrado
     - Ejemplo 2: Creación de un Rectángulo
@@ -166,5 +168,63 @@ Perímetro del triángulo escaleno: 12.0
 Ángulos internos del triángulo escaleno: [53.13, 36.87, 90.0]
 ```
 ---
+---
+# Clase Order *Revisted*
+1. Introducción
+2. Clases y Métodos Order
+    - Clase `Order`
+    - Clase `MenuItem`
+    - Clase `Appetizer`
+    - Clase `MainCourse`
+    - Clase `Beverage`
+    - Clase `Dessert`
+    - Clase `Payment`
+    - Clase `Card`
+    - Clase `Efective`
+3. Ejemplo
+    - Creación de la orden
+    - Añadir los setters
+    - Hacer el pago con tarjeta
+    - Hacer el pago en efectivo
+---
+## Introducción
+Continuando con el ejercicio de simulación de la orden de un restaurante, en este reto se incluyen formas de pago, se practica el **encapsulamiento** y además se aplican descuentos de una manera especial.
+---
+## Clases y Métodos
+### Clase `Order`
+Se modificó el método `calculate_total_price` para que si hay en la orden un plato principal, se aplique un descuento a la bebida y al postre en caso de estar también presentes en la orden.
+```python
+def calculate_total_price(self) -> float:
+        """
+        Calculates the total cost of the order.
 
-
+        Returns the sum of the total price of all items.
+        Also applies potential discounts based on the 
+        order composition.
+        """
+        bill: float = 0
+        beverage_discount: bool = False
+        dessert_discount: bool = False
+        for item in self.menu_items:
+            if "MainCourse" == repr(item):
+                beverage_discount, dessert_discount = True, True
+                # Aplicar el descuento
+            if "Beverage" == repr(item) and beverage_discount:
+                item.change_price(0.2)
+                beverage_discount = False
+            if "Dessert" == repr(item) and dessert_discount:
+                item.change_price(0.4)
+                dessert_discount = False
+            bill += item.get_total_price()
+            
+        return round(bill, 2)
+```
+### Clase `MenuItem`
+En el anterior reto de la clase 
+### Clase `Appetizer`
+### Clase `MainCourse`
+### Clase `Beverage`
+### Clase `Dessert`
+### Clase `Payment`
+### Clase `Card`
+### Clase `Efective`
